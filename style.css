@@ -552,6 +552,11 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   opacity: 0;
 }
 
+@keyframes pulseSeal {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  50%       { transform: translate(-50%, -50%) scale(1.12); }
+}
+
 .envelope-seal {
   position: absolute;
   left: 50%;
@@ -566,6 +571,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   z-index: 10;
   background: radial-gradient(circle, #e63950, #c9184a);
   box-shadow: 0 3px 18px rgba(201, 24, 74, 0.7);
+  animation: pulseSeal 2s infinite ease-in-out;
 }
 
 .prompt-text {
