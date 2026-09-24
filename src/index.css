@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Nunito:wght@300;400;500;600;700&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'Nunito', sans-serif;
+
+  --color-rose-blush: #fff0f3;
+  --color-rose-soft: #ffd6e0;
+  --color-rose-mid: #ffb3c6;
+  --color-rose-vivid: #ff4d6d;
+  --color-rose-deep: #c9184a;
+  --color-mauve: #e8c4d4;
+  --color-cream: #fff9f0;
+  --color-petal: #fce4ec;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  background: #fff0f3;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar { width: 0; }
+
+@keyframes float-heart {
+  0%   { transform: translateY(0) scale(1) rotate(0deg); opacity: 0.8; }
+  50%  { opacity: 0.5; }
+  100% { transform: translateY(-120vh) scale(0.4) rotate(20deg); opacity: 0; }
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0; transform: scale(0) rotate(0deg); }
+  50%       { opacity: 1; transform: scale(1) rotate(180deg); }
+}
+
+@keyframes pulse-heart {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.15); }
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-3deg); }
+  50%       { transform: rotate(3deg); }
+}
+
+@keyframes envelope-flap {
+  0%   { transform: rotateX(0deg); }
+  100% { transform: rotateX(-180deg); }
+}
+
+.font-display { font-family: var(--font-display); }
+.font-body    { font-family: var(--font-body); }
+
+.glass {
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 182, 193, 0.4);
+}
+
+.glass-deep {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 77, 109, 0.25);
+}
