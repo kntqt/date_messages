@@ -17,10 +17,11 @@
 
 *, *::before, *::after {
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
 }
 
 html, body, #root {
-  height: 100%;
+  min-height: 100%;
   margin: 0;
   padding: 0;
 }
@@ -29,6 +30,22 @@ body {
   font-family: var(--font-body);
   background: #fff0f3;
   overflow-x: hidden;
+  touch-action: manipulation;
+}
+
+/* iOS safe area utilities */
+.safe-top {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Custom styling for mobile date/time inputs */
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.8) sepia(50%) saturate(1000%) hue-rotate(300deg);
+  cursor: pointer;
 }
 
 ::-webkit-scrollbar { width: 0; }
