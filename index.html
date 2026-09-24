@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>A Special Message for Jill</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Fixed Controls -->
+  <button id="back-btn" class="nav-btn back-btn" aria-label="Go back" style="display: none;">
+    &#8592; Back
+  </button>
+
+  <button id="music-btn" class="nav-btn music-btn" aria-label="Toggle music">
+    OFF
+  </button>
+
+  <!-- Background Animated Elements -->
+  <div id="floating-hearts" class="fx-container" aria-hidden="true"></div>
+  <div id="rose-petals" class="fx-container" aria-hidden="true"></div>
+  <div id="confetti-container" class="fx-container" aria-hidden="true" style="display: none;"></div>
+  <div id="sparkle-container" class="fx-container" aria-hidden="true"></div>
+
+  <!-- Taunt Container (Question Page) -->
+  <div id="taunt-wrapper" class="taunt-wrapper" style="display: none;">
+    <div id="taunt-pill" class="taunt-pill"></div>
+  </div>
+
+  <!-- Cat Popup Modal -->
+  <div id="cat-popup-overlay" class="cat-popup-overlay" style="display: none;">
+    <div id="cat-popup-card" class="cat-popup-card glass-card">
+      <img id="cat-popup-img" src="" alt="reaction" class="cat-popup-img" />
+      <div class="cat-popup-caption-wrap">
+        <p id="cat-popup-caption" class="cat-popup-caption font-display"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dodging Floating No Button -->
+  <button id="floating-no-btn" class="floating-no-btn" style="display: none;">
+    No
+  </button>
+
+  <!-- Main Container / Page Viewport -->
+  <main id="app-container" class="page-container">
+
+    <!-- PAGE 1: ENVELOPE -->
+    <section id="page-envelope" class="page active">
+      <div class="envelope-content">
+        <!-- Stars above title -->
+        <div class="stars-row">
+          <svg class="star-icon" width="14" height="14" viewBox="0 0 24 24" fill="rgba(255,182,193,0.6)"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
+          <svg class="star-icon" width="10" height="10" viewBox="0 0 24 24" fill="rgba(255,182,193,0.4)"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
+          <svg class="star-icon" width="14" height="14" viewBox="0 0 24 24" fill="rgba(255,182,193,0.6)"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
+        </div>
+
+        <h1 class="main-title font-display glow-text">A Special Message</h1>
+        <p class="sub-title font-display">for Jill</p>
+
+        <!-- Envelope -->
+        <div class="envelope-wrapper">
+          <div id="envelope-box" class="envelope-box">
+            <div class="envelope-body"></div>
+            <div class="envelope-inner-border"></div>
+            <div class="corner-star top-left">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="#c9184a"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
+            </div>
+            <div class="corner-star top-right">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="#c9184a"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
+            </div>
+            <div class="envelope-bottom-fold"></div>
+            <div class="envelope-left-fold"></div>
+            <div class="envelope-right-fold"></div>
+            <div id="envelope-top-flap" class="envelope-top-flap"></div>
+            <div class="envelope-seal pulse-animation">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="#fff"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <p id="envelope-prompt" class="prompt-text font-display">Tap the envelope to open</p>
+        <p class="hint-text font-body">I have something special for you…</p>
+      </div>
+    </section>
+
+    <!-- PAGE 2: THE QUESTION -->
+    <section id="page-question" class="page">
+      <div class="glass-card question-card">
+        <div class="hearts-row">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="rgba(255,182,193,0.5)"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#ff4d6d"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="rgba(255,182,193,0.5)"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+        </div>
+
+        <h1 class="card-title font-display">Jill, will you go<br />on a date with me?</h1>
+
+        <div class="divider-line"></div>
+
+        <div class="button-group">
+          <button id="btn-yes" class="btn-primary">Yes</button>
+          <button id="btn-no-initial" class="btn-secondary">No</button>
+        </div>
+
+        <p id="question-footer-hint" class="card-hint font-body">Choose wisely</p>
+      </div>
+    </section>
+
+    <!-- PAGE 3: YES -->
+    <section id="page-yes" class="page">
+      <div class="glass-card celebration-card">
+        <div class="big-heart-wrap pulse-animation">
+          <svg width="56" height="56" viewBox="0 0 24 24" fill="#ff4d6d"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+        </div>
+
+        <h1 class="card-title font-display celebration-title">You said YES!</h1>
+
+        <div class="hearts-row">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="rgba(255,182,193,0.5)"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="rgba(255,182,193,0.5)"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="rgba(255,182,193,0.5)"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+        </div>
+
+        <p class="celebration-msg-1 font-display">You made me really happy, Jill.</p>
+        <p class="celebration-msg-2 font-body">Now let's choose where we're going…</p>
+
+        <button id="btn-choose-date" class="btn-primary w-full-mobile">Choose Our Date</button>
+      </div>
+    </section>
+
+    <!-- PAGE 4: LOCATION -->
+    <section id="page-location" class="page">
+      <div class="location-wrapper">
+        <div class="location-header">
+          <div class="stars-row">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="rgba(255,182,193,0.5)"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="rgba(255,182,193,0.7)"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="rgba(255,182,193,0.5)"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
+          </div>
+          <h1 class="card-title font-display">Where should we go?</h1>
+          <p class="location-sub font-body">Pick your perfect date spot, Jill</p>
+          <div class="divider-line small"></div>
+        </div>
+
+        <!-- Location Cards Grid -->
+        <div class="location-grid" id="location-grid">
+          <div class="location-card" data-id="balay-amani">
+            <div class="loc-image-wrap">
+              <img src="assets/place-balay-amani.jpg" alt="Balay Amani" class="loc-img" />
+              <div class="loc-overlay"></div>
+              <div class="loc-details">
+                <h3 class="loc-title font-display">Balay Amani</h3>
+                <p class="loc-desc font-body">A peaceful rooftop getaway — just us and the view.</p>
+              </div>
+              <div class="loc-badge">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+              </div>
+            </div>
+          </div>
+
+          <div class="location-card" data-id="the-crescent">
+            <div class="loc-image-wrap">
+              <img src="assets/place-the-crescent.jpg" alt="The Crescent" class="loc-img" />
+              <div class="loc-overlay"></div>
+              <div class="loc-details">
+                <h3 class="loc-title font-display">The Crescent</h3>
+                <p class="loc-desc font-body">Cozy cafe vibes, warm drinks, and good conversations.</p>
+              </div>
+              <div class="loc-badge">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+              </div>
+            </div>
+          </div>
+
+          <div class="location-card" data-id="bku-resto">
+            <div class="loc-image-wrap">
+              <img src="assets/place-bku-resto.jpg" alt="BKU Resto & Cafe" class="loc-img" />
+              <div class="loc-overlay"></div>
+              <div class="loc-details">
+                <h3 class="loc-title font-display">BKU Resto & Cafe</h3>
+                <p class="loc-desc font-body">Great food, great company — the perfect combo.</p>
+              </div>
+              <div class="loc-badge">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+              </div>
+            </div>
+          </div>
+
+          <div class="location-card" data-id="kinaiyahan">
+            <div class="loc-image-wrap">
+              <img src="assets/place-kinaiyahan.jpg" alt="Kinaiyahan Forest Park" class="loc-img" />
+              <div class="loc-overlay"></div>
+              <div class="loc-details">
+                <h3 class="loc-title font-display">Kinaiyahan Forest Park</h3>
+                <p class="loc-desc font-body">Nature, fresh air, and quality time together.</p>
+              </div>
+              <div class="loc-badge">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="location-footer">
+          <button id="btn-location-next" class="btn-primary w-full-mobile" disabled>
+            Next — Choose Date & Time
+          </button>
+          <p id="location-hint" class="card-hint font-body">Pick a spot first</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 5: DATE & TIME -->
+    <section id="page-datetime" class="page">
+      <div class="glass-card datetime-card">
+        <div class="text-center">
+          <div class="heart-icon-center">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="#ff4d6d"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+          </div>
+          <h1 class="card-title font-display">Okay, Jill… when are you free?</h1>
+          <div class="location-pill-badge">
+            <span id="datetime-location-name" class="font-body">Balay Amani</span>
+          </div>
+        </div>
+
+        <div class="form-inputs">
+          <div class="input-group">
+            <label for="input-date" class="input-label font-body">Date</label>
+            <input type="date" id="input-date" class="custom-input font-body" />
+          </div>
+          <div class="input-group">
+            <label for="input-time" class="input-label font-body">Time</label>
+            <input type="time" id="input-time" class="custom-input font-body" />
+          </div>
+        </div>
+
+        <!-- Plan preview box -->
+        <div id="plan-preview-box" class="plan-preview-box" style="display: none;">
+          <p class="plan-preview-title font-body">Our date plan</p>
+          <div class="plan-preview-row">
+            <span class="plan-preview-label font-body">WHERE</span>
+            <span id="preview-where" class="plan-preview-value font-body"></span>
+          </div>
+          <div class="plan-preview-row">
+            <span class="plan-preview-label font-body">WHEN</span>
+            <span id="preview-when" class="plan-preview-value font-body"></span>
+          </div>
+          <div class="plan-preview-row">
+            <span class="plan-preview-label font-body">TIME</span>
+            <span id="preview-time" class="plan-preview-value font-body"></span>
+          </div>
+        </div>
+
+        <button id="btn-confirm-date" class="btn-primary w-full" disabled>
+          Confirm Our Date
+        </button>
+      </div>
+    </section>
+
+    <!-- PAGE 6: FINAL CONFIRMATION -->
+    <section id="page-final" class="page">
+      <div class="glass-card final-card">
+        <div class="big-heart-wrap pulse-animation">
+          <svg width="56" height="56" viewBox="0 0 24 24" fill="#ff4d6d"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+        </div>
+
+        <h1 class="card-title font-display celebration-title">It's a Date!</h1>
+
+        <div class="hearts-row">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="rgba(255,182,193,0.45)"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="rgba(255,182,193,0.45)"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="rgba(255,182,193,0.45)"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+        </div>
+
+        <!-- Date plan summary -->
+        <div class="final-plan-box">
+          <p class="final-plan-heading font-body">Our Little Date Plan</p>
+          
+          <div class="final-plan-item">
+            <svg class="final-item-heart" width="14" height="14" viewBox="0 0 24 24" fill="rgba(255,77,109,0.6)"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+            <div>
+              <p class="final-item-label font-body">WHERE</p>
+              <p id="final-where" class="final-item-val font-body"></p>
+            </div>
+          </div>
+
+          <div class="final-plan-item">
+            <svg class="final-item-heart" width="14" height="14" viewBox="0 0 24 24" fill="rgba(255,77,109,0.6)"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+            <div>
+              <p class="final-item-label font-body">WHEN</p>
+              <p id="final-when" class="final-item-val font-body"></p>
+            </div>
+          </div>
+
+          <div class="final-plan-item">
+            <svg class="final-item-heart" width="14" height="14" viewBox="0 0 24 24" fill="rgba(255,77,109,0.6)"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+            <div>
+              <p class="final-item-label font-body">TIME</p>
+              <p id="final-time" class="final-item-val font-body"></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Countdown box -->
+        <div class="countdown-box">
+          <p id="countdown-msg" class="countdown-msg font-body">Counting down to our date…</p>
+          <div id="countdown-grid" class="countdown-grid">
+            <div class="countdown-unit">
+              <div class="countdown-tile"><span id="cd-days" class="font-display">00</span></div>
+              <span class="countdown-label font-body">DAYS</span>
+            </div>
+            <div class="countdown-unit">
+              <div class="countdown-tile"><span id="cd-hours" class="font-display">00</span></div>
+              <span class="countdown-label font-body">HRS</span>
+            </div>
+            <div class="countdown-unit">
+              <div class="countdown-tile"><span id="cd-minutes" class="font-display">00</span></div>
+              <span class="countdown-label font-body">MIN</span>
+            </div>
+            <div class="countdown-unit">
+              <div class="countdown-tile"><span id="cd-seconds" class="font-display">00</span></div>
+              <span class="countdown-label font-body">SEC</span>
+            </div>
+          </div>
+        </div>
+
+        <p class="final-quote-1 font-display">"No backing out now."</p>
+        <p class="final-quote-2 font-display">See you there, Jill. I'll be waiting for you.</p>
+
+        <div class="final-bounce-hearts">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="rgba(255,182,193,0.5)"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#ff4d6d"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="rgba(255,182,193,0.5)"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
